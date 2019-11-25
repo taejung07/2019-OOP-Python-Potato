@@ -1,1 +1,0 @@
-print("김보승 version #2")
