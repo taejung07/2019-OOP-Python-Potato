@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 from pygame.locals import *
 pygame.init()
 
@@ -49,6 +50,13 @@ def playdisplay():
     background.blit(img, (0,0))
     playscreen.set_caption('2048 학점')
     showtext('두번째 화면!', x_display/2, y_display/2, BLACK)
+    moving(playscreen, background)
+
+def moving(playscreen, background):
+    random_x = random.randint(0,3)
+    random_y = random.randint(0,3)
+    D_plus = pygame.image.load("D+.PNG")
+    background.blit(D_plus, (random_x, random_y))
     playscreen.update()
 
 def makeTextObjs(text, font, color):
