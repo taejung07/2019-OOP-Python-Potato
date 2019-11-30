@@ -33,6 +33,25 @@ pygame.display.set_caption('2048 학점')
 x_display = 425
 y_display = 425
 
+class Block:
+    def __init__(self):
+        self.image = pygame.image.load("D+.PNG")
+        self.x = 0
+        self.y = 0
+
+    def move(self, background):
+        key = pygame.key.get_pressed()
+        dist = 50
+        if key[pygame.K_DOWN]:
+            self.y += dist
+        elif key[pygame.K_UP]:
+            self.y -= dist
+        elif key[pygame.K_RIGHT]:
+            self.x += dist
+        elif key[pygame.K_LEFT]:
+            self.x -= dist
+        background.blit(self.image, (self.x, self.y))
+
 def startdisplay():
     global x_display, y_display
     startscreen = pygame.display
@@ -50,14 +69,13 @@ def playdisplay():
     background.blit(img, (0,0))
     playscreen.set_caption('2048 학점')
     showtext('두번째 화면!', x_display/2, y_display/2, BLACK)
-    moving(playscreen, background)
-
-def moving(playscreen, background):
-    random_x = random.randint(0,3)
-    random_y = random.randint(0,3)
-    D_plus = pygame.image.load("D+.PNG")
-    background.blit(D_plus, (random_x, random_y))
+    D_plus = Block()
+    moving(D_plus, background)
     playscreen.update()
+
+def moving(D_plus, background):
+    #D_plus = Block()
+    D_plus.move(background)
 
 def makeTextObjs(text, font, color):
     surf = font.render(text, True, color)
