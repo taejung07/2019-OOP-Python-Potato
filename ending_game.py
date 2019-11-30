@@ -20,7 +20,7 @@ def ending_game(display, score):
             elif event.type == pygame.KEYDOWN:
                 return event.type
 
-        if x > 395:
+        if x > 375:
             pivot1 = 1
             sum = -1
         elif x > 370:
@@ -65,12 +65,12 @@ def ending_game(display, score):
 
         pygame.draw.rect(display, (255, 204, 204), [x, 0, 60, 60])
         pygame.draw.rect(display, (255, 255, 255), [x, 0, 60, 60], 3)
-        pygame.draw.rect(display, (255, 204, 204), [400 - x, 400, 60, 60])
-        pygame.draw.rect(display, (255, 255, 255), [400 - x, 400, 60, 60], 3)
-        pygame.draw.rect(display, (255, 204, 204), [0, 400 - x, 60, 60])
-        pygame.draw.rect(display, (255, 255, 255), [0, 400 - x, 60, 60], 3)
-        pygame.draw.rect(display, (255, 204, 204), [400, x, 60, 60])
-        pygame.draw.rect(display, (255, 255, 255), [400, x, 60, 60], 3)
+        pygame.draw.rect(display, (255, 204, 204), [370 - x, 370, 60, 60])
+        pygame.draw.rect(display, (255, 255, 255), [370 - x, 370, 60, 60], 3)
+        pygame.draw.rect(display, (255, 204, 204), [0, 370 - x, 60, 60])
+        pygame.draw.rect(display, (255, 255, 255), [0, 370 - x, 60, 60], 3)
+        pygame.draw.rect(display, (255, 204, 204), [370, x, 60, 60])
+        pygame.draw.rect(display, (255, 255, 255), [370, x, 60, 60], 3)
         scorefont = pygame.font.SysFont("comicsansms", 32)
         scorefont2 = pygame.font.SysFont("comicsansms", 32)
         label1 = scorefont2.render("Game Over!!", 1, (102, 51, 51))
@@ -85,9 +85,9 @@ def ending_game(display, score):
         display.blit(label2, (130, 180))
         display.blit(label3, (35, 260))
         display.blit(label4, (x, 0))
-        display.blit(label5, (400 - x, 400))
-        display.blit(label6, (0, 400 - x))
-        display.blit(label7, (400, x))
+        display.blit(label5, (370 - x, 370))
+        display.blit(label6, (0, 370 - x))
+        display.blit(label7, (370, x))
 
         pygame.display.flip
         pygame.display.update()
