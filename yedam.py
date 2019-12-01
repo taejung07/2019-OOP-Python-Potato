@@ -2,6 +2,7 @@ import pygame
 import sys
 import ending_game
 import moving_animation
+import 2048(3)
 import time
 from pygame.locals import *
 pygame.init()
@@ -53,7 +54,8 @@ def playdisplay():
     img = pygame.image.load("realbg.png")
     background.blit(img, (0,0))
     playscreen.set_caption('2048 학점')
-    showtext('게임을 열심히 하는 중!', x_display/2, y_display/2, BLACK)
+    #게임 본론 구현 필요
+
     moving_animation.moving(display, 20, 34, 200, 34, "C+.png")
     time.sleep(1)
     playscreen.update()
