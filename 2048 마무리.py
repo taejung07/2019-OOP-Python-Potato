@@ -1,3 +1,10 @@
+#참고 코드: https://gist.github.com/lewisjdeane/752eeba4635b479f8bb2
+#많이 참고하지 않았어요!
+#역할배분
+#신예담: 로직, 시작화면, 디스플레이 전환 GUI
+#김태정: 플레이 화면, 블록 움직임, 블록 이미지 구현 GUI 구현
+#김보승: 점수계산 구현, 끝 화면 GUI, 매끄럽게 움직이는 블록 구현, 재시작 구현.
+
 import pygame, sys, time
 from pygame.locals import *
 from random import *
