@@ -16,6 +16,8 @@ background = [[-1]*4 for i in range(4)]
 
 
 def main(fromLoaded = False):
+    if printGameStart(SURFACE) == False:
+        return
     if not fromLoaded:
         new_block()
         new_block()
@@ -322,6 +324,25 @@ def printground():
 
             SURFACE.blit(label, (10, 10))
 
+def printGameStart(display):
+
+    img = pygame.image.load("realbg.png")
+    display.blit(pygame.transform.scale(img, (500, 500)), (0, 0))
+    scorefont = pygame.font.SysFont("comicsansms", 30)
+    label1 = scorefont.render("2048 THE GRADE VERSION", 1, (102, 51, 51))
+    label2 = scorefont.render("press any key to start!", 1, (102, 51, 51))
+    display.blit(label1, (50, 200))
+    display.blit(label2, (80, 400))
+
+    pygame.display.flip()
+    pygame.display.update()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return False
+            elif event.type == pygame.KEYDOWN:
+                return True
 
 def printGameOver(display):
     global Score
@@ -342,63 +363,62 @@ def printGameOver(display):
             elif event.type == pygame.KEYDOWN:
                 return event.type, event.key
 
-        if x > 375:
+        if x > 400:
             pivot1 = 1
             sum = -1
         elif x > 370:
             if pivot1 == 1:
-                sum = -1.5
+                sum = -2
             else:
-                sum = 1.5
+                sum = 2
         elif x > 320:
             if pivot1 == 1:
-                sum = -2.5
+                sum = -3
             else:
-                sum = 2.5
+                sum = 3
         elif x > 300:
-            if pivot1 == 1:
-                sum = -4
-            else:
-                sum = 4
-        elif x > 250:
             if pivot1 == 1:
                 sum = -5
             else:
                 sum = 5
-        elif x > 150:
+        elif x > 250:
             if pivot1 == 1:
                 sum = -4
             else:
                 sum = 4
+        elif x > 150:
+            if pivot1 == 1:
+                sum = -3
+            else:
+                sum = 3
         elif x > 75:
             if pivot1 == 1:
-                sum = -2.5
+                sum = -2
             else:
-                sum = 2.5
+                sum = 2
         elif x > 25:
             if pivot1 == 1:
-                sum = -1.5
+                sum = -1
             else:
-                sum = 1.5
+                sum = 1
         elif x < 0:
             pivot1 = 0
             sum = 1
         x += sum
 
-        pygame.draw.rect(display, (255, 204, 204), [x, 0, 60, 60])
-        pygame.draw.rect(display, (255, 255, 255), [x, 0, 60, 60], 3)
-        pygame.draw.rect(display, (255, 204, 204), [470 - x, 470, 60, 60])
-        pygame.draw.rect(display, (255, 255, 255), [470 - x, 470, 60, 60], 3)
-        pygame.draw.rect(display, (255, 204, 204), [0, 470 - x, 60, 60])
-        pygame.draw.rect(display, (255, 255, 255), [0, 470 - x, 60, 60], 3)
-        pygame.draw.rect(display, (255, 204, 204), [470, x, 60, 60])
-        pygame.draw.rect(display, (255, 255, 255), [470, x, 60, 60], 3)
-        scorefont = pygame.font.SysFont("comicsansms", 32)
+        pygame.draw.rect(display, (255, 204, 204), [x, 0, 100, 100])
+        pygame.draw.rect(display, (255, 255, 255), [x, 0, 100, 100], 3)
+        pygame.draw.rect(display, (255, 204, 204), [400 - x, 400, 100, 100])
+        pygame.draw.rect(display, (255, 255, 255), [400 - x, 400, 100, 100], 3)
+        pygame.draw.rect(display, (255, 204, 204), [0, 400 - x, 100, 100])
+        pygame.draw.rect(display, (255, 255, 255), [0, 400 - x, 100, 100], 3)
+        pygame.draw.rect(display, (255, 204, 204), [400, x, 100, 100])
+        pygame.draw.rect(display, (255, 255, 255), [400, x, 100, 100], 3)
+        scorefont = pygame.font.SysFont("comicsansms", 50)
         scorefont2 = pygame.font.SysFont("comicsansms", 32)
         label1 = scorefont2.render("Semester is finished!!", 1, (102, 51, 51))
         label2 = scorefont2.render("Your grade is " + score, 1, (102, 51, 51))
         label3 = scorefont2.render("press any key to restart!", 1, (102, 51, 51))
-        pygame.draw.polygon(display, (255, 255, 255), [[275, 420], [325, 420], [300, 460]])
         label4 = scorefont.render(" A+", 1, (255, 255, 255))
         label5 = scorefont.render(" C-", 1, (255, 255, 255))
         label6 = scorefont.render(" D", 1, (255, 255, 255))
@@ -407,10 +427,9 @@ def printGameOver(display):
         display.blit(label2, (120, 200))
         display.blit(label3, (70, 280))
         display.blit(label4, (x, 0))
-        display.blit(label5, (470 - x, 470))
-        display.blit(label6, (0, 470 - x))
-        display.blit(label7, (470, x))
-
+        display.blit(label5, (400 - x, 400))
+        display.blit(label6, (0, 400 - x))
+        display.blit(label7, (400, x))
         pygame.display.flip()
         pygame.display.update()
 
