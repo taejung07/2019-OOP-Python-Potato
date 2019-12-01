@@ -318,6 +318,8 @@ def printground():
                 if max < 9:
                     max = 9
                     Score = "A+"
+            elif background[i][j] == 10:
+                printGameOver(SURFACE)
             else:
                 block = Blank()
                 block.x = 60 + i * 87 + 10 * i
@@ -328,6 +330,7 @@ def printground():
             label = scorefont.render("Grade:" + " " + Score, 1, (0, 0, 0))
 
             SURFACE.blit(label, (10, 10))
+
 
 def printGameStart(display):
 
