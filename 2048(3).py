@@ -205,23 +205,24 @@ def combine_block(key):
             for j in range(0, 4):
                 logic.append(background[j][i])
 
-        while -1 in logic:
-            del logic[logic.index(-1)]
+            while -1 in logic:
+                del logic[logic.index(-1)]
 
-        for j in range(0, len(logic)-1):
-            if logic[j] == logic[j+1]:
-                logic[j] += 1
-                logic[j+1] = -1
+            for j in range(0, len(logic)-1):
+                if logic[j] == logic[j+1]:
+                    logic[j] += 1
+                    logic[j+1] = -1
 
-        while -1 in logic:
-            del logic[logic.index(-1)]
+            while -1 in logic:
+                del logic[logic.index(-1)]
 
-        for j in range(0, len(logic)):
-            background[j][i] = logic[j]
-        for j in range(len(logic), 4):
-            background[j][i] = -1
+            print(len(logic))
 
-        logic = []
+            for j in range(0, len(logic)):
+                background[j][i] = logic[j]
+            for j in range(len(logic), 4):
+                background[j][i] = -1
+            logic = []
 
 
 def printground():
