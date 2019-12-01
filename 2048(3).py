@@ -126,16 +126,12 @@ def combine_block(key):
     blank = []
     logic = []
     if key == pygame.K_UP:
-        cnt = 0
-        length = 0
         for i in range(0, 4):
             for j in range(0, 4):
                 logic.append(background[i][j])
 
             while -1 in logic:
                 del logic[logic.index(-1)]
-
-            print(logic)
 
             for j in range(0, len(logic)-1):
                 if logic[j] == logic[j+1]:
@@ -151,7 +147,6 @@ def combine_block(key):
                 background[i][j] = -1
 
             logic = []
-            length = 0
 
     elif key == pygame.K_RIGHT:
         flag = 0
