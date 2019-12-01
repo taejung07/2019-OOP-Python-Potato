@@ -1,5 +1,6 @@
 #사용법
 #def moving(display, 처음 x 좌표, 처음 y 좌표, 나중 x 좌표, 나중 y 좌표, imagefile(png 형태로)):
+#주의! 대각선 이동은 못함
 import pygame
 
 def moving(display, sx, sy, ex, ey, imagefile):
