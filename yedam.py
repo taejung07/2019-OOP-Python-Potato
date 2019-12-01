@@ -1,6 +1,7 @@
 import pygame
 import sys
-import random
+import ending_game
+import time
 from pygame.locals import *
 pygame.init()
 
@@ -33,29 +34,11 @@ pygame.display.set_caption('2048 학점')
 x_display = 425
 y_display = 425
 
-class Block:
-    def __init__(self):
-        self.image = pygame.image.load("D+.PNG")
-        self.x = 0
-        self.y = 0
-
-    def move(self, background):
-        key = pygame.key.get_pressed()
-        dist = 50
-        if key[pygame.K_DOWN]:
-            self.y += dist
-        elif key[pygame.K_UP]:
-            self.y -= dist
-        elif key[pygame.K_RIGHT]:
-            self.x += dist
-        elif key[pygame.K_LEFT]:
-            self.x -= dist
-        background.blit(self.image, (self.x, self.y))
-
 def startdisplay():
-    global x_display, y_display
+    global x_display, y_display, display
     startscreen = pygame.display
     background = startscreen.set_mode((x_display, y_display))
+    display = background
     startscreen.set_caption('2048 학점')
     img = pygame.image.load("realbg.png")
     background.blit(img, (0,0))
@@ -63,19 +46,15 @@ def startdisplay():
     startscreen.update()
 
 def playdisplay():
+    global display
     playscreen = pygame.display
     background = playscreen.set_mode((x_display, y_display), DOUBLEBUF)
     img = pygame.image.load("realbg.png")
     background.blit(img, (0,0))
     playscreen.set_caption('2048 학점')
-    showtext('두번째 화면!', x_display/2, y_display/2, BLACK)
-    D_plus = Block()
-    moving(D_plus, background)
+    showtext('게임을 열심히 하는 중!', x_display/2, y_display/2, BLACK)
     playscreen.update()
 
-def moving(D_plus, background):
-    #D_plus = Block()
-    D_plus.move(background)
 
 def makeTextObjs(text, font, color):
     surf = font.render(text, True, color)
@@ -92,6 +71,7 @@ image.fill(WHITE)
 
 
 while True:
+    global display
     startdisplay()
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -100,8 +80,10 @@ while True:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 while True:
+                    #score 반환하도록 만들어야 함
                     playdisplay()
-                    for event in pygame.event.get():
-                        if event.type == QUIT:
-                            pygame.quit()
-                            sys.exit()
+                    time.sleep(1)
+                    event_type = ending_game.ending_game(display, score = 325)
+                    if event_type == QUIT:
+                        pygame.quit()
+                        sys.exit()
