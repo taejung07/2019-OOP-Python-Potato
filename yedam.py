@@ -1,6 +1,7 @@
 import pygame
 import sys
 import ending_game
+import moving_animation
 import time
 from pygame.locals import *
 pygame.init()
@@ -53,6 +54,8 @@ def playdisplay():
     background.blit(img, (0,0))
     playscreen.set_caption('2048 학점')
     showtext('게임을 열심히 하는 중!', x_display/2, y_display/2, BLACK)
+    moving_animation.moving(display, 20, 34, 200, 34, "C+.png")
+    time.sleep(1)
     playscreen.update()
 
 
@@ -82,7 +85,6 @@ while True:
                 while True:
                     #score 반환하도록 만들어야 함
                     playdisplay()
-                    time.sleep(1)
                     event_type = ending_game.ending_game(display, score = 325)
                     if event_type == QUIT:
                         pygame.quit()
