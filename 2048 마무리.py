@@ -34,9 +34,9 @@ def main(fromLoaded = False):
             if checkIfCanGo() == True:
                 if event.type == KEYDOWN:
                     combine_block(event.key)
-
-                    new_block()
-                    new_block()
+                    if event.key == K_LEFT or event.key == K_RIGHT or event.key == K_UP or event.key == K_DOWN:
+                        new_block()
+                        new_block()
 
                     printground()
             else:
