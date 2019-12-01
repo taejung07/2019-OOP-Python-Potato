@@ -15,12 +15,11 @@ scorefont = pygame.font.SysFont("comicsans", 40)
 background = [[-1]*4 for i in range(4)]
 
 
-def main(fromLoaded = False):
+def main():
+    new_block()
+    new_block()
     if printGameStart(SURFACE) == False:
         return
-    if not fromLoaded:
-        new_block()
-        new_block()
 
     printground()
     event_type = ''
@@ -40,10 +39,11 @@ def main(fromLoaded = False):
 
                     printground()
             else:
-                event_type = printGameOver(SURFACE)
+                event_type, event_key = printGameOver(SURFACE)
 
             if event_type == KEYDOWN:
-                reset()
+                if event_key == K_r:
+                    reset()
 
 
         pygame.display.update()
@@ -330,7 +330,7 @@ def printGameStart(display):
     label1 = scorefont.render("2048 THE GRADE VERSION", 1, (102, 51, 51))
     label2 = scorefont.render("press any key to start!", 1, (102, 51, 51))
     display.blit(label1, (50, 200))
-    display.blit(label2, (80, 400))
+    display.blit(label2, (110, 400))
 
     pygame.display.flip()
     pygame.display.update()
@@ -359,7 +359,7 @@ def printGameOver(display):
             if event.type == pygame.QUIT:
                 pygame.quit()
             elif event.type == pygame.KEYDOWN:
-                return event.type
+                return event.type, event.key
 
         if x > 400:
             pivot1 = 1
@@ -416,14 +416,14 @@ def printGameOver(display):
         scorefont2 = pygame.font.SysFont("comicsansms", 32)
         label1 = scorefont2.render("Semester is finished!!", 1, (102, 51, 51))
         label2 = scorefont2.render("Your grade is " + score, 1, (102, 51, 51))
-        label3 = scorefont2.render("press any key to restart!", 1, (102, 51, 51))
+        label3 = scorefont2.render("press r to restart!", 1, (102, 51, 51))
         label4 = scorefont.render(" A+", 1, (255, 255, 255))
         label5 = scorefont.render(" C-", 1, (255, 255, 255))
         label6 = scorefont.render(" D", 1, (255, 255, 255))
         label7 = scorefont.render(" B0", 1, (255, 255, 255))
-        display.blit(label1, (100, 120))
+        display.blit(label1, (90, 120))
         display.blit(label2, (120, 200))
-        display.blit(label3, (70, 280))
+        display.blit(label3, (110, 280))
         display.blit(label4, (x, 0))
         display.blit(label5, (400 - x, 400))
         display.blit(label6, (0, 400 - x))
