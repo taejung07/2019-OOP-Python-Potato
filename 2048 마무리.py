@@ -40,12 +40,10 @@ def main(fromLoaded = False):
 
                     printground()
             else:
-                event_key = printGameOver(SURFACE)
+                event_type = printGameOver(SURFACE)
 
             if event_type == KEYDOWN:
-
-                if event_key == pygame.K_r:
-                    reset()
+                reset()
 
 
         pygame.display.update()
@@ -361,7 +359,7 @@ def printGameOver(display):
             if event.type == pygame.QUIT:
                 pygame.quit()
             elif event.type == pygame.KEYDOWN:
-                return event.type, event.key
+                return event.type
 
         if x > 400:
             pivot1 = 1
@@ -455,11 +453,11 @@ def checkIfCanGo():
 def reset():
     global Score
     global background
-
+    BLACK = (0, 0, 0)
     Score = "D+"
     SURFACE.fill(BLACK)
 
-    background = [[0 for i in range(0, 4)] for j in range(0, 4)]
+    background = [[-1 for i in range(0, 4)] for j in range(0, 4)]
 
     main()
 
