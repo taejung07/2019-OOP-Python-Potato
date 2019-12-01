@@ -266,7 +266,7 @@ def printMatrix():
                     max = 1024
                     Score = "A+"
             else:
-                pygame.draw.rect(SURFACE, (120,110,101), (60 + i * 87 + 10 * i, 60 + j * 87 + 10 * j, 87, 87))
+                pygame.draw.rect(SURFACE, (255, 255, 255), (60 + i * 87 + 10 * i, 60 + j * 87 + 10 * j, 87, 87))
 
             pygame.draw.rect(SURFACE, (240, 240, 206), (8, 8, 130, 30))
             label = scorefont.render("Grade:" + Score, 1, BLACK)

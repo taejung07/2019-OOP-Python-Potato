@@ -137,7 +137,7 @@ def combine_block(key):
                     if cnt != 0:
                         continue
                     else:
-                        if background[i][j] == background[i][k] and background[i][j] != -1:
+                        if background[i][j] == background[i][k] and background[i][j] != -1 and abs(j-k) != 1:
                             background[i][j] += 1
                             background[i][k] = -1
             cnt = 0

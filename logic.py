@@ -52,6 +52,7 @@ class A_minus(Block):
         self.image = pygame.image.load("A-.PNG")
 
 def new_block(): #두 번씩 실행해야 함.
+    global background
     random_x1 = random.randint(0, 3)
     random_y1 = random.randint(0, 3)
     if background[random_x1][random_y1] == -1:
@@ -61,6 +62,7 @@ def new_block(): #두 번씩 실행해야 함.
 
 
 def combine_block():
+    global background
     key = pygame.key.get_pressed()
     blank = []
     if key[pygame.K_UP]:
